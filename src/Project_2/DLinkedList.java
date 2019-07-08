@@ -314,6 +314,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     	n.succ.setpred(n.pred);
     	n.setsucc(null);
     	n.setpred(null);
+    	size-=1;
     	return n.data;
     }
     
@@ -343,6 +344,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     			Node n2 = n.succ;
     			n0.setsucc(n2);
     			n2.setpred(n0);
+    			size-=1;
     			return n.data;
     		}
     	}
@@ -487,6 +489,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	assertEquals(0, dll.prepend(0).data);
         	
         	assertEquals("[0, 1, 2, 3]", dll.toString());
+        	
+        	assertEquals(4, dll.size());
         }
         
         @Test
@@ -501,6 +505,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	assertEquals("[4, 5, 6, 7]", dll.toString());
         	dll.insertBefore(3, n1);
         	assertEquals("[3, 4, 5, 6, 7]", dll.toString());
+        	
+        	assertEquals(5, dll.size());
         }
         
         @Test
@@ -517,6 +523,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	
         	assertEquals("[I, am, not, alan]", dll.toString());
         	
+        	assertEquals(4, dll.size());
+        	
         }
         
         @Test
@@ -531,7 +539,9 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	
         	dll.removeNode(n);
         	
-        	assertEquals("[1, 3, 5, 7]", dll.toString());	
+        	assertEquals("[1, 3, 5, 7]", dll.toString());
+        	
+        	assertEquals(4, dll.size());
         }
         
         @Test
@@ -545,6 +555,8 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         	dll.remove(2);
         	
         	assertEquals("[2, 4, 6]", dll.toString());
+        	
+        	assertEquals(3, dll.size());
         }
         
     }
