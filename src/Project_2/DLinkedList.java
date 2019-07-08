@@ -47,9 +47,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // This is an extremely small method
         //throw new NotImplementedError();
     	
-    	for(Node n = head; n != null; n= n.succ ) {
-    		this.size++;
-    	}
+    	
     	return this.size;
     }
 
@@ -82,7 +80,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     	String res ="[";
     	for(Node n=tail; n!=null; n=n.pred) {
     		if(n!= tail) {
-    			res = res +",";
+    			res = res +", ";
     		}
     		res= res+ n.data;
     	}
@@ -108,7 +106,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     		if(head==null) {
     			head=n;
     		}
-    		//size +=1;
+    		size +=1;
     return n;
     	
         // TODO item #4
@@ -149,6 +147,11 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         // (If h is exactly the middle, then either way is ok.)
         //throw new NotImplementedError();
 		Node n= null;
+		
+		if (index>=size||index<0) {
+			throw new IndexOutOfBoundsException("your index[0..size) is too big!");
+		}
+		
     	if(size -index > index) {
     		 n= head;
 	    	for (int i =0; i<index; i++) {
@@ -157,7 +160,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     	}
     	else if(size - index <= index) {
     		n=tail;
-    		for (int i =0; i<size-index; i++) {
+    		for (int i =0; i<size-(index+1); i++) {
         		n=n.pred;
         	}	
     	}
@@ -194,6 +197,9 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
      * @throws IndexOutOfBoundsException if index is not in [0..size)
      */
     public @Override E set(int index, E element) {
+    	if(index >= size || index<0){
+    		throw new IndexOutOfBoundsException("your index [0..size) is to big");
+    	}
     	this.getNode(index).setdata(element);
     	return this.getNode(index).data;
     	
@@ -212,7 +218,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     private Node prepend(E element) {
     	Node n= new Node(null,element, head);
     	this.head = n;
-    	//size+=1;
+    	size+=1;
     	return n;
         // TODO item #9
         // This mid-size helper function will be used by other methods
@@ -227,14 +233,18 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
      * @param node a non-null Node that must be in this list
      */
     private Node insertBefore(E element, Node node) {
-    	Node n= new Node(node.pred,element,node);
-    	//size+=1;
-    	if(node.pred==null) {
+    	assert node!=null;
+    	
+    	
+    	Node n0=node.pred;
+    	Node n = new Node(n0, element, node);    	  	
+    	node.setpred(n);
+    	if(n0!=null) {
+    	n0.setsucc(n);
+    	}else if(n0==null) {
     		head=n;
     	}
-    	else if (node==null) {
-    		tail=n;
-    	}
+    	size+=1;
     	return n;
         // TODO item #10
         // This mid-size helper function will be used by other methods.
@@ -254,8 +264,15 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
      * @throws IndexOutOfBoundsException if i is not in [0..size]
      */
     public @Override void add(int index, E element) {
-    	Node n= new Node(this.getNode(index).pred,element, this.getNode(index));
-    	//size+=1;
+    	if(index>=size) {
+    		throw new IndexOutOfBoundsException("your index[0..size) is too big!");
+    	}
+    	Node node0 = this.getNode(index).pred;
+    	Node node = this.getNode(index);
+    	Node n= new Node(node0,element, node);
+    	node0.setsucc(n);
+    	node.setpred(n);
+    	size+=1;
         // TODO item #11
         // Rely on helper methods to keep this method small.
         // Note that a helper method could throw the exception; doesn't
@@ -290,20 +307,25 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
      * @throws IndexOutOfBoundsException if i is not in [0..size)
      */
     public @Override E remove(int i) {
-    	int h=0;
+    	int h=-1;
+    	
     	for(Node n =head; n!=null; n=n.succ) {
     		h++;
     		if(h==i) {
-    			E e= n.data;
-    			n.setdata(null);
-    			return e;
+    			Node n0 = n.pred;
+    			Node n2 = n.succ;
+    			n0.setsucc(n2);
+    			n2.setpred(n0);
+    			return n.data;
     		}
     	}
+		throw new IndexOutOfBoundsException("your number[0..size) is too big!");
+
         // TODO item #13
         // Rely on helper methods to keep this method small.
         // Note that a helper method could throw the exception; doesn't
         // have to be done here.
-        throw new NotImplementedError();
+        //throw new NotImplementedError();
     }
     
     ////////////////////////////////////////////////////////////////////////////
@@ -384,5 +406,125 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
             System.out.println(ll.toString());
             assertEquals(dll.toString(), ll.toString());
         }
+        
+        
+        @Test
+        public void testToStringrev() {
+        	DLinkedList<Integer> dll = new DLinkedList<Integer>();
+        	dll.add(1);
+        	dll.add(2);
+        	dll.add(3);
+        	assertEquals("[1, 2, 3]", dll.toString());
+        	assertEquals("[3, 2, 1]", dll.toStringRev());
+        }
+        
+        @Test
+        public void testAdd() {
+        	DLinkedList<Integer> dll = new DLinkedList<Integer>();
+        	
+        	assertEquals(true, dll.add(11));      	        	
+        }
+        
+        @Test
+        public void testGetNodeandGet() {
+        	
+        	DLinkedList<Integer> dll = new DLinkedList<Integer>();
+        	dll.add(5);
+        	dll.add(4);
+        	dll.add(3);
+        	
+        	assertEquals(3, dll.getNode(2).data);
+        	assertEquals(dll.getNode(2).data, dll.get(2));
+        	
+        	System.out.println("getNode: " + dll.toString());	
+        }
+        
+        @Test 
+        public void testSet() {
+        	DLinkedList<String>dll = new DLinkedList<String>();
+        	
+        	dll.add("I");
+        	dll.add("Love");
+        	dll.add("your");
+        	dll.add("dog");
+        	
+        	assertEquals("[I, Love, your, dog]", dll.toString());
+        	
+        	assertEquals("her", dll.set(2,"her").toString());
+        	
+        	assertEquals("[I, Love, her, dog]", dll.toString());
+        }
+        
+        @Test
+        public void testPrepend() {
+        	DLinkedList<Integer>dll = new DLinkedList<Integer>();
+        	
+        	dll.add(1);
+        	dll.add(2);
+        	dll.add(3);
+        	
+        	assertEquals(0, dll.prepend(0).data);
+        	
+        	assertEquals("[0, 1, 2, 3]", dll.toString());
+        }
+        
+        @Test
+        public void testInsertBefore() {
+        	DLinkedList<Integer>dll = new DLinkedList<Integer>();
+        	DLinkedList<Integer>.Node n1 = dll.append(4);
+        	dll.add(5);
+        	DLinkedList<Integer>.Node n2 = dll.append(7);    	
+        	
+        	assertEquals("[4, 5, 7]", dll.toString());
+        	dll.insertBefore(6, n2);
+        	assertEquals("[4, 5, 6, 7]", dll.toString());
+        	dll.insertBefore(3, n1);
+        	assertEquals("[3, 4, 5, 6, 7]", dll.toString());
+        }
+        
+        @Test
+        public void TestaddwTwoparam() {
+        	DLinkedList<String>dll = new DLinkedList<String>();
+        	
+        	dll.add("I");
+        	dll.add("am");
+        	dll.add("alan");
+        	
+        	assertEquals("[I, am, alan]", dll.toString());
+        	
+        	dll.add(2, "not");
+        	
+        	assertEquals("[I, am, not, alan]", dll.toString());
+        	
+        }
+        
+        @Test
+        public void testRemoveNode() {
+        	DLinkedList<Integer>dll = new DLinkedList<Integer>();
+        	
+        	dll.add(1);
+        	dll.add(3);
+        	dll.add(5);
+        	DLinkedList<Integer>.Node n = dll.append(6);
+        	dll.add(7);
+        	
+        	dll.removeNode(n);
+        	
+        	assertEquals("[1, 3, 5, 7]", dll.toString());	
+        }
+        
+        @Test
+        public void testRemove() {
+        	DLinkedList<Integer>dll = new DLinkedList<Integer>();
+        	dll.add(2);
+        	dll.add(4);
+        	dll.add(5);
+        	dll.add(6);
+        	
+        	dll.remove(2);
+        	
+        	assertEquals("[2, 4, 6]", dll.toString());
+        }
+        
     }
 }
