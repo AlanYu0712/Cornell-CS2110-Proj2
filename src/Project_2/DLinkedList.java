@@ -25,7 +25,10 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     public DLinkedList() {
         // TODO item #1
         // Look at the class invariant to determine how to implement this.
-        throw new NotImplementedError();
+    	head = null;
+    	tail = null;
+    	size = 0;
+        
     }
 
     /**
@@ -35,7 +38,10 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     public @Override int size() {
         // TODO item #2
         // This is an extremely small method
-        throw new NotImplementedError();
+    	for(Node n = head; n != null; n = n.succ) {
+    		this.size++;
+    	}
+    	return this.size;
     }
 
     /**
@@ -74,9 +80,22 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
      * Place element in a new node at the end of the list and return the new node.
      * This operation must take constant time.
      */
-    private Node append(E element) {
+    private Node append(E element ) {
         // TODO item #4
         // This mid-size helper function will be used by other methods
+    	
+    	Node new_node = null;
+    	
+    	
+    	if(tail != null) {
+    		tail.succ = new_node;
+    	}
+    	
+    	new_node.succ = null;
+    	new_node.pred = tail;
+    	
+    	
+    	
         throw new NotImplementedError();
     }
     
@@ -263,6 +282,7 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
             assertEquals("[Mike]", ll.toStringRev());
             assertEquals(1, ll.size());
             assertEquals(ll.tail, n);   
+            
         }
 
         /** Compare DLinkedList to standard library list */
