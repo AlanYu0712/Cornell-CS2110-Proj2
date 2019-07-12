@@ -5,6 +5,7 @@ package Project_2;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -560,4 +561,34 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
         }
         
     }
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////
+    //Discussion 5
+    
+    @Override
+    public Iterator<E> iterator(){
+    	throw new NotImplementedError();
+    }
+    
+    
+    public class DListIterator implements Iterator<E>{
+
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			throw new NotImplementedError();
+		}
+
+		@Override
+		public E next() {
+			// TODO Auto-generated method stub
+			throw new NotImplementedError()
+		}
+    	
+    }
+    
+    
+    
+    
 }
