@@ -1,13 +1,13 @@
 package Project_2;
 
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,6 +26,9 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     /** last  node of the linked list (null if the list is empty) */
     private Node tail;
     
+    /**create an instance of node
+     */
+    private Node n;
     
     /** Constructor: an empty linked list. 
      * @return */
@@ -568,22 +571,42 @@ public class DLinkedList<E> extends java.util.AbstractList<E> {
     
     @Override
     public Iterator<E> iterator(){
-    	throw new NotImplementedError();
+    	
+    	return new DListIterator();
     }
     
     
-    public class DListIterator implements Iterator<E>{
+    private class DListIterator implements Iterator<E>{
+    	
+    	int index;
+
+    	public DListIterator() {
+			// TODO Auto-generated constructor stub
+    		index = -1;
+    		n=head;
+		}
 
 		@Override
 		public boolean hasNext() {
 			// TODO Auto-generated method stub
-			throw new NotImplementedError();
+			return index < (size-1);
 		}
 
 		@Override
 		public E next() {
 			// TODO Auto-generated method stub
-			throw new NotImplementedError()
+			if(hasNext()!=true) 
+				throw new NoSuchElementException();
+			index+=1;
+			
+			if(index==0) 
+				return n.data;
+			
+			n=n.succ;
+
+			return n.data;
+			
+			
 		}
     	
     }

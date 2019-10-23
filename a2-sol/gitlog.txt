@@ -1,0 +1,189 @@
+commit cc70e018ccacc0dd05d0cc2ae297563aa2b3338a
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Mon Jul 8 08:25:33 2019 -0400
+
+    bug fix; not appending log
+
+commit 775155b6957815f3db6c7684155ff1d085f6f31b
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Mon Jul 8 08:24:37 2019 -0400
+
+    not shipping iterator implementation
+
+commit 2f52d9adf6913be8bd1dc921b197ca8dde847f9f
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Mon Jul 8 08:22:53 2019 -0400
+
+    Moved iterator implementation out, for publication after d5.
+
+commit bac990f9c04b2a8d1020b895b74a81fb9c049cca
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 14:27:38 2019 -0400
+
+    always rebuild gitlog
+
+commit 45422d7754f8299f7689805396a26e68451f1860
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 14:25:45 2019 -0400
+
+    added README
+
+commit e18b234e25c1c4cdbc2fd125308ce99ce7138942
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 14:20:46 2019 -0400
+
+    added script to zip up solutions
+
+commit e97f597d93daf964aadfdd787263efc4e45cf5b2
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 14:14:37 2019 -0400
+
+    Added iterator implementation to CLinkedList.
+
+commit ea7e6995b92d1787a2d04f1104e7aa0a710fbf00
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 13:53:19 2019 -0400
+
+    Bug fixes; all tests pass.
+
+commit c19c4f00fd6eafbdd3dc397e5a15b2b968abe2d2
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 13:39:15 2019 -0400
+
+    Moved the black-box tests into a separate class.
+    
+    This way I can share them with CLinkedList.
+
+commit 33a97109ccea85b29c29c34f7323c7e13be0bb9d
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 13:17:37 2019 -0400
+
+    Sketched implementation of CLinkedList; untested.
+    
+    Will factor out DLinkedList tests.
+
+commit 23b0884d157c8de32541cb7ec64b82e47a6425e4
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:49:27 2019 -0400
+
+    Implemented remove; all tests pass.
+
+commit b7f0153ed1d0d4079ce0c42727a2ef7a94ab309f
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:46:29 2019 -0400
+
+    Tests for remove.
+
+commit 95064c19ae9135c539459eddaa207ab6b9fa8fae
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:40:13 2019 -0400
+
+    removed redundant code.
+
+commit c30805d416b80a81b1857d8605f0aab88c0753b3
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:38:15 2019 -0400
+
+    Implemented add(int,E) and related methods; all tests pass.
+
+commit 509cd15d2e054762b375704c72bf987098ecffec
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:28:18 2019 -0400
+
+    Separated test cases for insert into diff. methods, added some.
+
+commit 9f3125a55201aed74e59679ab351dc764d467ab3
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:25:15 2019 -0400
+
+    Tested empty prepend.
+
+commit 92484f0ba796d0ad43df7f44b36b1f01a758b632
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:22:10 2019 -0400
+
+    Fixed prepend.
+
+commit 5c98fcfe419cfcb6eac41c10531f8213eeceba64
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:17:39 2019 -0400
+
+    implemented and tested prepend; test currently failing.
+
+commit 1744da8abe1f3355ef627e39c709a833b71f9b25
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:13:53 2019 -0400
+
+    Added insertion test
+
+commit 04caf4ce89b43e24d404329f2df13e415bf67c4a
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:07:00 2019 -0400
+
+    Implemented set; added exception tests; all tests pass.
+
+commit 6d9accce69822aebb5a87bf287ebca7f5cc637ad
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:03:30 2019 -0400
+
+    Test for set
+
+commit dcebf753f16501a6df612ef9c349b183c35d4569
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 12:00:00 2019 -0400
+
+    Implemented getNode and get; all tests pass.
+
+commit 68f23acb9864c033eb4f64cca4ee6409949ca6ba
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 11:55:04 2019 -0400
+
+    Test for get()
+
+commit 3e25c389f48f03bd6259d4d821c64e97c2eb28d1
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 11:50:25 2019 -0400
+
+    Implemented add and append; all tests pass.
+
+commit cba3ed213de6772a9f82350ce99a58641a285efa
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 11:26:04 2019 -0400
+
+    Moved assertInvariant back into Tests
+
+commit ac469f4dc9929a264579a45026c216f9d32ffe1a
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 11:11:14 2019 -0400
+
+    Moved assertInvariant out of Tests and implemented it.
+
+commit 668a468ea21849de413355055e1cfd3f17f58683
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 11:04:35 2019 -0400
+
+    Wrote and tested constructor and toString.
+
+commit 65d0bc976b85ed39459f338e67dc4bdfde5269ee
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Fri Jul 5 10:57:41 2019 -0400
+
+    started solutions
+
+commit 6c09c47985c45687ccc21247b223a388a739a59c
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Tue Jul 2 22:42:26 2019 -0400
+
+    made symlinks to release code in sol dir
+
+commit 6e27681cedfbe4e953b5fd4611e511ec6d4dc351
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Tue Jul 2 22:40:03 2019 -0400
+
+    updated release code; made it same as sol code.
+
+commit 97567d64aa12a39485a1b3a0a4dc973e7127e511
+Author: Michael George <mdgeorge@cs.cornell.edu>
+Date:   Tue Jul 2 20:00:15 2019 -0400
+
+    skeleton project 2
